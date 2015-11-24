@@ -21,23 +21,7 @@ print(means[1:5])
 
 ##2. % of ratings 4+: Calculate the percentage of ratings for each movie that are 4 or higher. Order with the highest percentage first, and submit the top 5.
 
-# filter_ge4 <- raw2>=4
-# filter_ge4[is.na(filter_ge4)] <- FALSE
-# data_ge4 <- raw2
-# data_ge4[!filter_ge4] <- NA
-# means_ge4 <- sapply(data_ge4, FUN = mean, na.rm=TRUE)
-# head(means_ge4)
-# head(data_ge4)
-
-filter_ge4 <- raw2>=4
-data_ge4 <- raw2
-data_ge4[!filter_ge4] <- NA
-count_ge4 <- apply(filter_ge4, MARGIN = 2, FUN = sum, na.rm=TRUE)
-
-# works for the example
-#x <- raw[,20]
-#sum(!is.na(x[x>=4])) / sum(!is.na(x))
-
+# function for calculating the percentage of movies with ratings above or equal to 4
 calcPercentGE4 <- function(x) {
   sum(!is.na(x[x>=4])) / sum(!is.na(x))
 }
@@ -64,15 +48,6 @@ print(count_ratings[1:5])
 
 # starwars
 names(raw2)[1]
-
-# works for column 19 from the example
-# x <- raw2[, c(1,19)]
-# sw_notNA <- !is.na(x[1]) 
-# col_notNA <- !is.na(x[2])
-# prob_sw_and_col <- sum(sw_notNA & col_notNA)
-# prob_sw <- sum(sw_notNA)
-# prob <- prob_sw_and_col / prob_sw
-# round(prob * 100, digits = 1)
 
 #vetor of occurrences of star wars iv rates
 sw_notNA <- !is.na(raw2[, 1]) 
